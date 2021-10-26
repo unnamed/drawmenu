@@ -72,9 +72,6 @@ class Project {
 Project.current = new Project({
     // initialize empty project
     inventory: new Inventory([
-        new Row([
-            new Slot({ id: 0 }),
-            new Slot({ id: 1 })
-        ])
+        new Row([])
     ])
 });
