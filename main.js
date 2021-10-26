@@ -7,8 +7,7 @@ async function createWindow() {
         show: false,
         backgroundColor: '#1d2126',
         frame: false,
-        titleBarStyle: 'hidden',
-        nodeIntegration: true
+        titleBarStyle: 'hidden'
     });
 
     win.maximize();
