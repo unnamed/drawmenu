@@ -71,7 +71,5 @@ class Project {
 
 Project.current = new Project({
     // initialize empty project
-    inventory: new Inventory([
-        new Row([])
-    ])
+    inventory: new Inventory([])
 });

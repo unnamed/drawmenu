@@ -34,6 +34,10 @@ class Inventory {
         return this._rows[index];
     }
 
+    delete(index) {
+        this._rows.splice(index, 1);
+    }
+
     /**
      *
      * @param {number} rowIndex

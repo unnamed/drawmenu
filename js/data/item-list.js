@@ -60,6 +60,7 @@ const ItemList = (function () {
             itemElement.appendChild(label);
 
             itemElement.addEventListener("dragstart", () => {
+                // TODO: this should use new Slot({...})
                 ItemUI.dragging = {
                     type: key,
                     displayName: item.name,

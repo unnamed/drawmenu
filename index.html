@@ -81,7 +81,7 @@
                 <button onclick="RowUI.addRow()"><i class="fas fa-plus"></i></button>
                 <button onclick="RowUI.clearRows()"><i class="fas fa-trash-alt"></i></button>
             </div>
-            <div id="row-container">
+            <div id="container__rows">
             </div>
         </div>
     </nav>
@@ -163,6 +163,8 @@
             DialogUI.show(`Error while importing items: ${e.name}`, e.message);
             console.error(e);
         });
+    // create initial row
+    RowUI.addRow();
     InventoryUI.draw();
 </script>
 
