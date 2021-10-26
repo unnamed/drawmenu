@@ -235,7 +235,7 @@
      */
     async function loadItems(version) {
         // item list fetch
-        const response = await fetch(`https://raw.githubusercontent.com/unnamed/webpage/master/menumaker/assets/${version}/list.json`);
+        const response = await fetch(`https://raw.githubusercontent.com/unnamed/guicraft/main/assets/${version}/list.json`);
         const json = await response.json();
 
         json.forEach(item => {
