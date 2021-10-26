@@ -1,0 +1,34 @@
+{
+  "name": "guicraft",
+  "description": "A graphical user interface editor for Minecraft: Java Edition",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "yusshu",
+    "email": "yushu@unnamed.team"
+  },
+  "homepage": "https://unnamed.team/guicraft",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unnamed/guicraft.git"
+  },
+  "main": "main.js",
+  "build": {
+    "appId": "guicraft",
+    "productName": "Guicraft"
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [ "minecraft", "editor", "gui" ],
+  "bugs": {
+    "url": "https://github.com/unnamed/guicraft/issues"
+  },
+  "dependencies": {
+    "electron": "^15.3.0"
+  }
+}
