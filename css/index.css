@@ -1,4 +1,8 @@
 /*! Unnamed Team's Guicraft v0.1.0 | MIT License | github.com/unnamed/guicraft */
+@import url("header.css");
+@import url("dialog.css");
+@import url("inventory.css");
+@import url("rows.css");
 
 * {
     /* Remove default margin and padding from all elements */
@@ -7,10 +11,11 @@
 
     /* Use border-box box sizing */
     box-sizing: border-box;
-}
 
-:root {
+    /* Variables */
     /* Colors */
+    --accent: #9966f5;
+    --accent-darker: #814ae3;
     --color: #ceccd2;
     --bg: #18181d;
     --secondary-bg: #27272b;
@@ -22,26 +27,17 @@
     --right-sidebar-width: 22%;
     --default-size: 14px;
     --slot-size: 80px;
+
+    /* Set default font color and font family */
+    color: var(--color);
+    font-family: 'minecraft-regular', monospace;
 }
 
 /* It's a single and non-scrollable webpage */
 body { overflow: hidden; }
 
-.text {
-    color: var(--color);
-    font-family: 'minecraft-regular', monospace;
-}
-
 .app-name {
-    color: var(--color);
     font-size: 22px;
-}
-
-.space-between {
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    justify-content: space-between;
 }
 
 /** Default color for minecraft-style outputs */
@@ -69,77 +65,40 @@ button {
 }
 
 /*
- * Dialog
+ * Scroll
  * ===========================================================
  */
-.dialog-bg {
-    /**
-     * Dialog background styles, this makes the
-     * background darker
-     */
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, .7);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-#dialog {
-    /**
-     * Dialog container styles
-     */
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, .2);
-    background-color: var(--secondary-bg);
-    border-radius: 8px;
-    padding: 32px;
-    position: absolute;
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #00000011; }
+::-webkit-scrollbar-thumb { background: var(--accent); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-darker); }
 
-    /* Center the dialog */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* Add some space between dialog components */
-#dialog__heading { margin-bottom: 10px; }
-#dialog__info { margin-bottom: 20px; }
 
 
 /*
- * Header
+ * Classes
  * ===========================================================
  */
-header {
-    display: flex;
-    height: var(--header-height);
-    background-color: var(--bg);
-    padding: 0 20px;
+.flex { display: flex; }
+.flex-row { flex-direction: row; }
+.flex-column { flex-direction: column; }
+.space-between { justify-content: space-between; }
+.flex-1 { flex: 1; }
+.draggable-app-region { -webkit-app-region: drag; }
 
-    justify-items: center;
-    align-items: center;
-    justify-content: flex-start;
-    overflow: hidden;
+.h-100 { height: 100%; }
+.h-50 { height: 50%; }
+.h-rem { height: calc(100vh - var(--header-height)); }
 
-    -webkit-app-region: drag;
+.min-h-0 { min-height: 0; }
+
+.v-scroll {
+    /* Vertical Scroll */
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
+/**/
 
-.header__element {
-    display: inline-block;
-    height: 100%;
-}
-
-.header__tools {
-    display: flex;
-}
-.header__element button, .header__element select {
-    background: none;
-    border: none;
-
-    margin: 0 4px;
-    padding: 0 10px;
-
-    height: 100%;
-    border-radius: 0;
-}
 
 /*
  * Sidebars
@@ -147,35 +106,12 @@ header {
  */
 nav {
     display: flex;
-    height: calc(100vh - var(--header-height));
     background-color: var(--secondary-bg);
     padding: 0 16px;
-
-    flex-direction: column;
-    justify-content: space-between;
-
-    margin: 0;
 }
 
 .left-sidebar {
-    float: left;
     width: var(--left-sidebar-width);
-    justify-content: start;
-}
-
-#item-list-container {
-    display: flex;
-    min-height: 0;
-    height: 50%;
-}
-
-#item-list {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-
-    overflow-x: hidden;
-    overflow-y: scroll;
 }
 
 .item-element {
@@ -199,44 +135,7 @@ nav {
     height: 100%;
 }
 
-/*
- * Row Controls
- * ===========================================================
- */
-
-.rows-container {
-    flex: 1;
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-
-    background-color: rgba(0, 0, 0, .17);
-}
-
-.row-controls {
-    padding: 4px 0;
-}
-
-.row {
-    display: flex;
-    padding: 4px;
-    justify-content: space-between;
-}
-
-.rows-container button {
-    background: none;
-    border: none;
-    color: var(--color);
-    padding: 0 2px;
-}
-
-.row-buttons {
-    display: inline-block;
-}
-
 .right-sidebar {
-    display: inline-block;
-    float: right;
     width: var(--right-sidebar-width);
 }
 
@@ -276,130 +175,6 @@ nav {
     align-items: flex-start;
     width: 100%;
     height: 50%;
-}
-
-/*
- * Workspace
- * ===========================================================
- */
-main {
-    display: inline-block;
-    background-color: var(--workspace-bg);
-
-    width: calc(100% - var(--left-sidebar-width) - var(--right-sidebar-width));
-    height: calc(100vh - var(--header-height));
-    padding: 16px;
-    overflow: hidden;
-}
-
-main > h3 {
-    text-align: center;
-}
-
-/* Inventory table */
-#workspace {
-    display: block;
-    width: 80%;
-    margin: .5vh auto;
-}
-
-@media (max-width: 1100px) {
-    #workspace {
-        width: 95%;
-    }
-}
-
-#workspace table {
-
-    width: 100%;
-    background-color: #cccccc;
-    padding: 0 .9em .9em;
-
-    border-spacing: 0;
-}
-
-.inventory-outliner {
-    outline: .35vw solid #000;
-
-    border-top: .35vw solid #fff;
-    border-left: .35vw solid #fff;
-    border-right: .35vw solid #555555;
-    border-bottom: .35vw solid #555555;
-}
-
-#workspace .title {
-
-    width: 100%;
-
-    font-size: 2.3vw;
-    font-weight: 100;
-
-    padding: 1vw;
-
-    background-color: #cccccc;
-    border: none;
-    outline: none;
-}
-
-#workspace td::after {
-    content: '';
-    display: block;
-    margin-top: 100%;
-}
-
-.cell-content {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-#workspace td {
-
-    position: relative;
-    width: 11.11%;
-
-    background-color: #8b8b8b;
-    cursor: pointer;
-
-    /* Shadow */
-    border-top: .35vw solid #373737;
-    border-left: .35vw solid #373737;
-
-    /* Light */
-    border-bottom: .35vw solid #fff;
-    border-right: .35vw solid #fff;
-}
-
-#workspace td img {
-    width: 100%;
-    height: 100%;
-}
-
-#workspace td:hover {
-    background-color: #dbdbdb;
-}
-
-#workspace td img:hover {
-    filter: opacity(50%);
-}
-
-#item-tooltip {
-    z-index: 100;
-    position: absolute;
-    white-space: nowrap;
-    padding: 0 8px;
-    background-color: #000;
-    border: .15vw solid #2a0d74;
-    border-radius: 3px;
-    outline: .15vw solid #000;
-}
-
-#item-tooltip p {
-    color: var(--color);
-    font-size: 1.4vw;
-    margin: .35vw 0;
 }
 
 /*

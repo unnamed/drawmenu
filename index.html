@@ -25,7 +25,7 @@
         <h2 class="text" id="dialog__heading"></h2>
         <p class="text" id="dialog__info"></p>
         <div id="dialog__options">
-            <button class="mm-button text" id="close-dialog">Ok</button>
+            <button onclick="DialogUI.close()">Ok</button>
         </div>
     </div>
 </div>
@@ -37,107 +37,134 @@
 </div>
 
 <!-- Header or Toolbar -->
-<header>
-    <!-- Brand -->
-    <div class="header__element">
-        <h2 class="app-name text">menumaker</h2>
-    </div>
-
-    <!-- Editor Tools -->
-    <div class="header__element header__tools space-between">
+<header class="flex flex-row">
+    <div class="flex flex-row h-100">
+        <!-- Brand -->
+        <h2 class="app-name">menumaker</h2>
 
         <!-- Minecraft Version-->
-        <select class="mm-select text" name="version-select" id="version-select">
-            <option value="1.8">1.8</option>
-            <option value="1.13">1.13</option>
-        </select>
+        <label>
+            <select name="version-select" id="version-select">
+                <option value="1.8">1.8</option>
+                <option value="1.13">1.13</option>
+            </select>
+        </label>
+
+        <button onclick="Project.import(project => Project.current = project)">Import</button>
+        <button onclick="Project.current.export()">Export</button>
     </div>
 
-    <!-- Buttons -->
-    <div class="header__element">
-        <button class="mm-button text" id="import">Import</button>
-        <button class="mm-button text" id="export">Export</button>
+    <div class="flex flex-1 draggable-app-region h-100">
     </div>
 </header>
 
-<!-- Left sidebar -->
-<nav class="left-sidebar">
-    <div class="input">
-        <label class="text" for="item-search"><i class="fas fa-search"></i></label>
-        <input class="text" type="text" id="item-search" placeholder="Search items...">
-    </div>
-    <div id="item-list-container">
-        <div id="item-list">
-        </div>
-    </div>
-    <div class="rows-container">
-        <div class="row-controls">
-            <button id="add-row"><i class="fas fa-plus"></i></button>
-            <button id="clear-rows"><i class="fas fa-trash-alt"></i></button>
-        </div>
-        <div id="row-container">
-        </div>
-    </div>
-</nav>
+<!-- Workspace and sidebars container -->
+<div class="flex flex-row">
+    <!-- Left sidebar -->
+    <nav class="left-sidebar flex-column space-between h-rem">
 
-<!-- Main, the editor -->
-<main>
-    <div id="workspace">
-        <div class="inventory-outliner">
-            <div class="mc-text-output title" id="title-display">
-                <!-- Generated with JavaScript -->
+        <!-- Search bar -->
+        <div class="input">
+            <label class="text" for="item-search"><i class="fas fa-search"></i></label>
+            <input class="text" type="text" id="item-search" placeholder="Search items...">
+        </div>
+
+        <!-- Item List -->
+        <div class="flex min-h-0 h-50">
+            <div id="item-list" class="v-scroll">
             </div>
-            <table>
-                <tbody id="table-body">
-                </tbody>
-            </table>
         </div>
-    </div>
-</main>
 
-<!-- Right sidebar -->
-<nav class="right-sidebar">
+        <!-- Rows-->
+        <div class="rows-container">
+            <div class="row-controls">
+                <button onclick="RowUI.addRow()"><i class="fas fa-plus"></i></button>
+                <button onclick="RowUI.clearRows()"><i class="fas fa-trash-alt"></i></button>
+            </div>
+            <div id="row-container">
+            </div>
+        </div>
+    </nav>
 
-    <div class="input">
-        <label class="text" for="title">Title</label>
-        <input
-                class="text live-input"
-                type="text"
-                id="title"
-                value="Title"
-                data-bound="title-display">
-    </div>
+    <!-- Main, the editor -->
+    <main class="flex-1 h-rem">
+        <div id="workspace">
+            <div class="inventory-outer">
+                <div class="inventory-inner">
+                    <div class="mc-text-output title" id="output__title">
+                        <!-- Generated with JavaScript -->
+                    </div>
+                    <table>
+                        <tbody id="table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <div class="input">
-        <label class="text" for="item-type">Type</label>
-        <select class="text" name="item-type" id="item-type" disabled>
-        </select>
-    </div>
+    <!-- Right sidebar -->
+    <nav class="right-sidebar flex-column h-rem">
 
-    <div class="input">
-        <label class="text" for="display-name">Display Name</label>
-        <input class="text" type="text" id="display-name" disabled>
-    </div>
+        <div class="input">
+            <label class="text">
+                Title
+                <input
+                        class="text live-input"
+                        type="text"
+                        id="input__title"
+                        value="Title"
+                        data-bound="title-display">
+            </label>
+        </div>
 
-    <div class="input">
-        <label class="text" for="binding">Binding</label>
-        <input class="text" type="text" id="binding" disabled>
-    </div>
+        <div class="input">
+            <label class="text" for="display-name">Display Name</label>
+            <input class="text" type="text" id="display-name" disabled>
+        </div>
 
-    <div class="input">
-        <label class="text" for="custom-model-data">Custom Model Data</label>
-        <input class="text" type="number" id="custom-model-data" disabled>
-    </div>
+        <div class="input">
+            <label class="text" for="binding">Binding</label>
+            <input class="text" type="text" id="binding" disabled>
+        </div>
 
-    <div class="input" id="lore-input">
-        <label class="text" for="lore">Lore</label>
-        <textarea class="text" name="lore" id="lore" disabled></textarea>
-    </div>
-</nav>
+        <div class="input">
+            <label class="text" for="custom-model-data">Custom Model Data</label>
+            <input class="text" type="number" id="custom-model-data" disabled>
+        </div>
+
+        <div class="input" id="lore-input">
+            <label class="text" for="lore">Lore</label>
+            <textarea class="text" name="lore" id="lore" disabled></textarea>
+        </div>
+    </nav>
+</div>
 
 <script src="lib/mcformat.min.js"></script>
 <script src="lib/lazysizes.min.js"></script>
+
+<script src="js/util.js"></script>
+<script src="js/codec/codec.js"></script>
+<script src="js/data/item-list.js"></script>
+<script src="js/struct/inventory.js"></script>
+<script src="js/struct/row.js"></script>
+<script src="js/struct/slot.js"></script>
+<script src="js/ui/dialog.js"></script>
+<script src="js/ui/inventory-ui.js"></script>
+<script src="js/ui/item-ui.js"></script>
+<script src="js/ui/rows.js"></script>
 <script src="js/index.js"></script>
+<script src="js/project.js"></script>
+
+<script>
+    // initial load
+    ItemList.loadItems(Project.current.minecraftVersion)
+        .catch(e => {
+            DialogUI.show(`Error while importing items: ${e.name}`, e.message);
+            console.error(e);
+        });
+    InventoryUI.draw();
+</script>
 
 </body>
 </html>

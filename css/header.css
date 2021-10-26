@@ -1,0 +1,25 @@
+/*! Unnamed Team's Guicraft v0.1.0 | MIT License | github.com/unnamed/guicraft */
+/*
+ * Header Styles
+ * ===========================================================
+ */
+header {
+    height: var(--header-height);
+    background-color: var(--bg);
+    padding: 0 20px;
+
+    justify-items: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+header button, header select {
+    background: none;
+    border: none;
+
+    margin: 0 4px;
+    padding: 0 10px;
+
+    height: 100%;
+    border-radius: 0;
+}
