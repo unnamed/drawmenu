@@ -118,6 +118,8 @@ header {
     align-items: center;
     justify-content: flex-start;
     overflow: hidden;
+
+    -webkit-app-region: drag;
 }
 
 .header__element {
