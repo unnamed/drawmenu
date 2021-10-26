@@ -1,0 +1,21 @@
+{
+  "short_name": "Guicraft",
+  "name": "Guicraft: A UI editor for Minecraft",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+  ],
+  "start_url": "./index.html",
+  "background_color": "#1d2126",
+  "theme_color": "#9966f5",
+  "display": "standalone",
+  "orientation": "portrait-primary"
+}
