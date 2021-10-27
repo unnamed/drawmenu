@@ -24,12 +24,12 @@ const RowUI = (function () {
         deleteButton.innerHTML = `<i class="fas fa-trash-alt"></i>`;
 
         deleteButton.addEventListener("click", () => {
-            Project.current.inventory.delete(index);
+            Inventory.current.delete(index);
             InventoryUI.draw();
             element.remove();
             elements.splice(index, elements.length).forEach(element => element.remove());
 
-            for (let i = index; i < Project.current.inventory.length; i++) {
+            for (let i = index; i < Inventory.current.length; i++) {
                 // re-draw next
                 container.appendChild(createElement(i));
             }
@@ -43,7 +43,7 @@ const RowUI = (function () {
     }
 
     function addRow() {
-        const inventory = Project.current.inventory;
+        const inventory = Inventory.current;
         if (inventory.length >= Inventory.MAX_ROWS) {
             DialogUI.show(
                 "Cannot add more rows",
@@ -62,7 +62,7 @@ const RowUI = (function () {
     }
 
     function clearRows() {
-        const inventory = Project.current.inventory;
+        const inventory = Inventory.current;
 
     }
 

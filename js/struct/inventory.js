@@ -55,4 +55,9 @@ class Inventory {
         return this._rows.length;
     }
 
+    static get current() {
+        // shortcut
+        return Project.current.inventory;
+    }
+
 }

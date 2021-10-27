@@ -14,7 +14,7 @@ const InventoryUI = (function () {
     title.input.addEventListener("input", event => {
         const value = event.target.value;
         formatter.formatInto(title.output, value);
-        Project.current.inventory.title = value;
+        Inventory.current.title = value;
     });
 
     let tableBody = e("table-body");
@@ -25,14 +25,14 @@ const InventoryUI = (function () {
     function draw() {
 
         // update title
-        title.input.value = Project.current.inventory.title;
+        title.input.value = Inventory.current.title;
         formatter.formatInto(title.output, title.input.value);
 
         const newBody = document.createElement("tbody");
 
         // then write the new rows
-        for (let row = 0; row < Project.current.inventory.length; row++) {
-            const rowData = Project.current.inventory.get(row);
+        for (let row = 0; row < Inventory.current.length; row++) {
+            const rowData = Inventory.current.get(row);
             const tableRow = newBody.insertRow();
 
             for (let slot = 0; slot < Row.MAX_LENGTH; slot++) {
