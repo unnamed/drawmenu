@@ -56,18 +56,35 @@ const ItemUI = (function () {
      * @type {Slot | undefined}
      */
     let drag = undefined;
+    /**
+     * The location where the dragged item
+     * is coming (so we can delete it later)
+     * @type {[number, number] | undefined}
+     */
+    let from;
 
     /**
      * @param {Slot | undefined} item
      * @param {Row} row
+     * @param {number} rowIndex The row index
      * @param {number} slot
      * @return {HTMLElement}
      */
-    function createElement(item, row, slot) {
+    function createElement(item, row, rowIndex, slot) {
         const element = document.createElement("div");
 
         element.addEventListener("dragover", event => event.preventDefault());
         element.addEventListener("drop", event => {
+
+            if (from !== undefined) {
+                // remove item
+                const oldRow = Inventory.current.get(from[0]);
+                if (oldRow) {
+                    oldRow.set(from[1], undefined);
+                }
+                from = undefined;
+            }
+
             event.preventDefault();
             if (drag === undefined) {
                 return;
@@ -98,10 +115,8 @@ const ItemUI = (function () {
 
             img.setAttribute("draggable", "true");
             img.addEventListener("dragstart", () => {
+                from = [rowIndex, slot];
                 drag = item;
-                // remove item
-                row.set(slot, undefined);
-                // InventoryUI.draw();
             });
             img.addEventListener("mouseenter", () => Tooltip.set(element, item));
             img.addEventListener("mouseleave", () => Tooltip.unset());

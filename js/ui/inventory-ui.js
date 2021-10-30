@@ -39,7 +39,7 @@ const InventoryUI = (function () {
                 const item = rowData.get(slot);
 
                 const realCell = tableRow.insertCell();
-                const cell = ItemUI.createElement(item, rowData, slot);
+                const cell = ItemUI.createElement(item, rowData, row, slot);
 
                 cell.classList.add("cell-content");
                 realCell.appendChild(cell);
