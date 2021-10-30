@@ -4,7 +4,7 @@
  * ===========================================================
  */
 main {
-    background-color: var(--workspace-bg);
+    background-color: var(--black);
 
     padding: 16px;
     overflow: hidden;
@@ -112,7 +112,7 @@ main {
 }
 
 #item-tooltip p {
-    color: var(--color);
+    color: var(--white-2);
     font-size: 1.4vw;
     margin: .35vw 0;
 }

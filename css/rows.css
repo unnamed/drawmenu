@@ -25,7 +25,7 @@
 .rows-container button {
     background: none;
     border: none;
-    color: var(--color);
+    color: var(--white-2);
     padding: 0 2px;
 }
 

@@ -19,7 +19,7 @@
      * Dialog container styles
      */
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, .2);
-    background-color: var(--secondary-bg);
+    background-color: var(--black-2);
     border-radius: 8px;
     padding: 32px;
     position: absolute;
