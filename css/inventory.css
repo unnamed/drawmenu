@@ -105,14 +105,18 @@ main {
     position: absolute;
     white-space: nowrap;
     padding: 0 8px;
-    background-color: #000;
-    border: .15vw solid #2a0d74;
+    background-color: #110210ee;
+    border: .15vw solid #2E0A65ee;
     border-radius: 3px;
-    outline: .15vw solid #000;
+    outline: .15vw solid #110210ee;
 }
 
 #item-tooltip p {
     color: var(--white-2);
     font-size: 1.4vw;
     margin: .35vw 0;
+}
+
+#item-tooltip p .mc-root {
+    color: #AA00AA;
 }
