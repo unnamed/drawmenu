@@ -4,6 +4,7 @@ import Section from './component/Section';
 import {FaCamera, FaSyncAlt} from "react-icons/all";
 import Input from "./component/Input";
 import Select from "./component/Select";
+import Canvas from './component/Canvas';
 
 function App() {
     return (
@@ -13,10 +14,15 @@ function App() {
 
                 <Sidebar>
                     <Section name="Menu">
-                        <Input name="Title" placeholder="Title" />
+                        <Input name="Title" placeholders={["Title"]} />
                         <Select name="Layout" options={["Chest"]}/>
                     </Section>
                     <Section name="Background">
+                        <div>
+                            <label className="text-base px-4">Texture</label>
+                            <Canvas />
+                        </div>
+                        <Input name="Position" placeholders={["Width", "Height"]} />
                     </Section>
                 </Sidebar>
 
@@ -31,7 +37,11 @@ function App() {
 
                 <Sidebar>
                     <Section name="Element">
-                        <Input name="Display Name" placeholder="Item Display Name" />
+                        <Input name="Display Name" placeholders={["Item Display Name"]} />
+                        <div>
+                            <label className="text-base px-4">Texture</label>
+                            <Canvas />
+                        </div>
                     </Section>
                     <Section name="Outliner">
 
