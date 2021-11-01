@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="lib/mcformat.min.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="favicon.ico">
-    <title>menumaker</title>
+    <title>Drawmenu</title>
 </head>
 <body>
 
@@ -38,109 +38,124 @@
 </div>
 
 <!-- Header or Toolbar -->
-<header class="flex flex-row">
-    <div class="flex flex-row h-100">
-        <!-- Brand -->
-        <h2 class="app-name">menumaker</h2>
+<header>
+    <div>
+        <h1>drawmenu</h1>
 
-        <!-- Minecraft Version-->
-        <label>
-            <select name="version-select" id="version-select">
-                <option value="1.8">1.8</option>
-                <option value="1.13">1.13</option>
-            </select>
-        </label>
-
-        <button onclick="Project.import(project => Project.current = project)">Import</button>
-        <button onclick="Project.current.export()">Export</button>
+        <p>File</p>
+        <p>Edit</p>
+        <p>View</p>
+        <p>Help</p>
     </div>
 
-    <div class="flex flex-1 draggable-app-region h-100">
+    <div>
     </div>
 </header>
 
 <!-- Workspace and sidebars container -->
-<div class="flex flex-row">
+<div class="workspace">
+
     <!-- Left sidebar -->
-    <nav class="left-sidebar flex-column space-between h-rem">
+    <aside class="left-sidebar">
 
-        <!-- Search bar -->
-        <div class="input">
-            <label class="text" for="item-search"><i class="fas fa-search"></i></label>
-            <input class="text" type="text" id="item-search" placeholder="Search items...">
-        </div>
+        <!-- Menu Properties Section -->
+        <section>
+            <div class="header">
+                <span>Menu</span>
+                <span><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="body">
+                <label>
+                    Title
+                    <input type="text" placeholder="Menu Title">
+                </label>
 
-        <!-- Item List -->
-        <div class="flex min-h-0 h-50">
-            <div id="item-list" class="v-scroll">
+                <label>
+                    Layout
+                    <input type="text" placeholder="Chest">
+                </label>
             </div>
-        </div>
+        </section>
 
-        <!-- Rows-->
-        <div class="rows-container">
-            <div class="row-controls">
-                <button onclick="RowUI.addRow()"><i class="fas fa-plus"></i></button>
-                <button onclick="RowUI.clearRows()"><i class="fas fa-trash-alt"></i></button>
+        <!-- Menu Background Section -->
+        <section>
+            <div class="header">
+                <span>Background</span>
+                <span><i class="fas fa-chevron-down"></i></span>
             </div>
-            <div id="container__rows">
+            <div class="body" style="background: url(assets/pixels.svg); background-size: 45px; width: 100%; min-height: 300px;">
             </div>
-        </div>
-    </nav>
+            <div class="body">
+                <label>
+                    Position
+                    <span style="display: flex; flex-direction: row; gap: 5px;">
+                        <input type="text" placeholder="Width">
+                        <input type="text" placeholder="Height">
+                    </span>
+                </label>
+            </div>
+        </section>
+
+    </aside>
 
     <!-- Main, the editor -->
-    <main class="flex-1 h-rem">
-        <div id="workspace">
-            <div class="inventory-outer">
-                <div class="inventory-inner">
-                    <div class="mc-text-output title" id="output__title">
-                        <!-- Generated with JavaScript -->
-                    </div>
-                    <table>
-                        <tbody id="table-body">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <main>
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <span><i class="fas fa-camera"></i></span>
+            <span><i class="fas fa-sync-alt"></i></span>
         </div>
     </main>
 
     <!-- Right sidebar -->
-    <nav class="right-sidebar flex-column h-rem">
+    <aside class="right-sidebar">
 
-        <div class="input">
-            <label class="text">
-                Title
-                <input
-                        class="text live-input"
-                        type="text"
-                        id="input__title"
-                        value="Title"
-                        data-bound="title-display">
-            </label>
-        </div>
+        <!-- Element Section -->
+        <section>
+            <div class="header">
+                <span>Element</span>
+                <span><i class="fas fa-chevron-down"></i></span>
+            </div>
 
-        <div class="input">
-            <label class="text" for="display-name">Display Name</label>
-            <input class="text" type="text" id="display-name" disabled>
-        </div>
+            <div class="body">
+                <label>
+                    Display Name
+                    <input type="text" placeholder="Item Display Name">
+                </label>
 
-        <div class="input">
-            <label class="text" for="binding">Binding</label>
-            <input class="text" type="text" id="binding" disabled>
-        </div>
+                <label>
+                    Lore
+                    <textarea cols="30" rows="5" placeholder="Item Lore"></textarea>
+                </label>
 
-        <div class="input">
-            <label class="text" for="custom-model-data">Custom Model Data</label>
-            <input class="text" type="number" id="custom-model-data" disabled>
-        </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label>Texture</label>
+                    <div style="background: url(assets/pixels.svg); background-size: 45px; width: 100%; min-height: 200px;">
+                        <!-- Texture Container -->
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="input" id="lore-input">
-            <label class="text" for="lore">Lore</label>
-            <textarea class="text" name="lore" id="lore" disabled></textarea>
-        </div>
-    </nav>
+        <!-- Outliner Section -->
+        <section>
+            <div class="header">
+                <span>Outliner</span>
+                <span><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="toolbar">
+                <i class="fas fa-plus-square"></i>
+                <i class="fas fa-folder-plus"></i>
+            </div>
+            <div class="body" style="flex: 1; background-color: #1D1F2B;">
+
+            </div>
+        </section>
+
+    </aside>
 </div>
 
+<!--
 <script src="lib/mcformat.min.js"></script>
 <script src="lib/lazysizes.min.js"></script>
 
@@ -168,6 +183,6 @@
     RowUI.addRow();
     InventoryUI.draw();
 </script>
-
+-->
 </body>
 </html>
