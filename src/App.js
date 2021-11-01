@@ -29,6 +29,7 @@ function App() {
 
                 <Sidebar>
                     <Section name="Element">
+                        <Input name="Display Name" placeholder="Item Display Name" />
                     </Section>
                     <Section name="Outliner">
 
