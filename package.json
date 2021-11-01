@@ -1,34 +1,48 @@
 {
-  "name": "guicraft",
+  "name": "drawmenu",
   "description": "A graphical user interface editor for Minecraft: Java Edition",
   "version": "0.1.0",
   "license": "MIT",
+  "private": true,
   "author": {
     "name": "yusshu",
     "email": "yushu@unnamed.team"
   },
-  "homepage": "https://unnamed.team/guicraft",
+  "homepage": "https://unnamed.team/drawmenu",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/unnamed/guicraft.git"
+    "url": "git+https://github.com/unnamed/drawmenu.git"
   },
   "main": "main.js",
-  "build": {
-    "appId": "guicraft",
-    "productName": "Guicraft"
-  },
-  "directories": {
-    "doc": "docs",
-    "lib": "lib"
-  },
   "scripts": {
-    "start": "electron ."
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "keywords": [ "minecraft", "editor", "gui" ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "keywords": [
+    "minecraft",
+    "editor",
+    "gui"
+  ],
   "bugs": {
-    "url": "https://github.com/unnamed/guicraft/issues"
+    "url": "https://github.com/unnamed/drawmenu/issues"
   },
   "dependencies": {
-    "electron": "^15.3.0"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3"
   }
 }
