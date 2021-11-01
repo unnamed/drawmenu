@@ -9,7 +9,7 @@ export default function Section({ children, name }) {
                 <span>{name}</span>
                 <span>{visible ? <FaChevronDown /> : <FaChevronUp />}</span>
             </div>
-            <div className={visible ? "block" : "hidden"}>
+            <div className={`flex flex-col gap-2 ${visible ? 'block' : 'hidden'}`}>
                 {children}
             </div>
         </section>
