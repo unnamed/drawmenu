@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/unnamed/drawmenu.git"
   },
-  "main": "main.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
