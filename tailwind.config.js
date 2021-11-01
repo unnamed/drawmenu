@@ -5,6 +5,7 @@ module.exports = {
     extend: {},
     colors: {
       night: {
+        200: '#13151D',
         300: '#0A0B10'
       },
       white: {
@@ -13,6 +14,10 @@ module.exports = {
     },
     fontFamily: {
       sans: 'Rubik'
+    },
+    flex: {
+      '1': '1 1 0%',
+      '2/5': '.4 .4 0%'
     }
   },
   variants: {
