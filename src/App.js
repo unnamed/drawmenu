@@ -3,6 +3,7 @@ import Sidebar from './component/Sidebar';
 import Section from './component/Section';
 import {FaCamera, FaSyncAlt} from "react-icons/all";
 import Input from "./component/Input";
+import Select from "./component/Select";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                 <Sidebar>
                     <Section name="Menu">
                         <Input name="Title" placeholder="Title" />
+                        <Select name="Layout" options={["Chest"]}/>
                     </Section>
                     <Section name="Background">
                     </Section>
