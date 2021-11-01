@@ -1,14 +1,14 @@
 {
-  "short_name": "Guicraft",
-  "name": "Guicraft: A UI editor for Minecraft",
+  "short_name": "Drawmenu",
+  "name": "Drawmenu: A graphical UI editor for Minecraft",
   "icons": [
     {
-      "src": "/icons/icon-192.png",
+      "src": "logo192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/icons/icon-512.png",
+      "src": "logo512.png",
       "type": "image/png",
       "sizes": "512x512"
     },
