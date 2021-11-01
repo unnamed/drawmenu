@@ -10,6 +10,9 @@ module.exports = {
       white: {
         100: '#afabab'
       }
+    },
+    fontFamily: {
+      sans: 'Rubik'
     }
   },
   variants: {
