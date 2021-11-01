@@ -2,6 +2,7 @@ import Header from './component/Header';
 import Sidebar from './component/Sidebar';
 import Section from './component/Section';
 import {FaCamera, FaSyncAlt} from "react-icons/all";
+import Input from "./component/Input";
 
 function App() {
     return (
@@ -11,9 +12,9 @@ function App() {
 
                 <Sidebar>
                     <Section name="Menu">
+                        <Input name="Title" placeholder="Title" />
                     </Section>
                     <Section name="Background">
-
                     </Section>
                 </Sidebar>
 
