@@ -1,6 +1,9 @@
 # editor files
-.idea
+/.idea/
 *.iml
 
 # packages
-node_modules
+/node_modules/
+
+# output files
+/build/
