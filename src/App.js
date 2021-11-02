@@ -15,7 +15,7 @@ function App() {
                 <Sidebar>
                     <Section name="Menu">
                         <Input name="Title" placeholders={["Title"]} />
-                        <Select name="Layout" options={["Chest"]}/>
+                        <Select name="Layout" options={["Chest", "Anvil"]}/>
                     </Section>
                     <Section name="Background">
                         <div>
