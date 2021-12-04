@@ -6,68 +6,68 @@
  */
 const RowUI = (function () {
 
-    const container = document.getElementById("container__rows");
-    let elements = [];
+  const container = document.getElementById('container__rows');
+  let elements = [];
 
-    /**
-     *
-     * @param {number} index
-     * @return {HTMLElement}
-     */
-    function createElement(index) {
-        const element = document.createElement("div");
-        const span = document.createElement("span");
-        const deleteButton = document.createElement("button");
+  /**
+   *
+   * @param {number} index
+   * @return {HTMLElement}
+   */
+  function createElement(index) {
+    const element = document.createElement('div');
+    const span = document.createElement('span');
+    const deleteButton = document.createElement('button');
 
-        element.classList.add("output__row", "flex", "space-between");
-        span.innerText = `Row #${index + 1}`;
-        deleteButton.innerHTML = `<i class="fas fa-trash-alt"></i>`;
+    element.classList.add('output__row', 'flex', 'space-between');
+    span.innerText = `Row #${index + 1}`;
+    deleteButton.innerHTML = `<i class="fas fa-trash-alt"></i>`;
 
-        deleteButton.addEventListener("click", () => {
-            Inventory.current.delete(index);
-            InventoryUI.draw();
-            element.remove();
-            elements.splice(index, elements.length).forEach(element => element.remove());
+    deleteButton.addEventListener('click', () => {
+      Inventory.current.delete(index);
+      InventoryUI.draw();
+      element.remove();
+      elements.splice(index, elements.length).forEach(element => element.remove());
 
-            for (let i = index; i < Inventory.current.length; i++) {
-                // re-draw next
-                container.appendChild(createElement(i));
-            }
-        });
+      for (let i = index; i < Inventory.current.length; i++) {
+        // re-draw next
+        container.appendChild(createElement(i));
+      }
+    });
 
-        element.appendChild(span);
-        element.appendChild(deleteButton);
-        elements.push(element);
+    element.appendChild(span);
+    element.appendChild(deleteButton);
+    elements.push(element);
 
-        return element;
+    return element;
+  }
+
+  function addRow() {
+    const inventory = Inventory.current;
+    if (inventory.length >= Inventory.MAX_ROWS) {
+      DialogUI.show(
+        'Cannot add more rows',
+        `The rows limit is ${Inventory.MAX_ROWS}`
+      );
+      return;
     }
+    const index = inventory.length;
+    inventory.add(new Row([]));
 
-    function addRow() {
-        const inventory = Inventory.current;
-        if (inventory.length >= Inventory.MAX_ROWS) {
-            DialogUI.show(
-                "Cannot add more rows",
-                `The rows limit is ${Inventory.MAX_ROWS}`
-            );
-            return;
-        }
-        const index = inventory.length;
-        inventory.add(new Row([]));
+    // draw in our container
+    container.appendChild(createElement(index));
 
-        // draw in our container
-        container.appendChild(createElement(index));
+    // draw in inventory
+    InventoryUI.draw();
+  }
 
-        // draw in inventory
-        InventoryUI.draw();
-    }
+  function clearRows() {
+    const inventory = Inventory.current;
 
-    function clearRows() {
-        const inventory = Inventory.current;
+  }
 
-    }
-
-    return {
-        addRow,
-        clearRows
-    };
+  return {
+    addRow,
+    clearRows
+  };
 })();

@@ -4,10 +4,10 @@
  * @param {HTMLElement} replacement The replacement
  */
 function replace(element, replacement) {
-    element.parentNode.replaceChild(replacement, element);
+  element.parentNode.replaceChild(replacement, element);
 }
 
-const formatter = new MCFormat({ colorChar: "&", allowMagic: true });
+const formatter = new MCFormat({colorChar: '&', allowMagic: true});
 
 /**
  * Formats the given text into the specified
@@ -17,11 +17,11 @@ const formatter = new MCFormat({ colorChar: "&", allowMagic: true });
  * @param {string} text The raw text
  */
 MCFormat.prototype.formatInto = function (element, text) {
-    const children = element.children;
-    const output = this.format(text);
-    if (children.length === 0) {
-        element.appendChild(output);
-    } else {
-        replace(children.item(0), output);
-    }
+  const children = element.children;
+  const output = this.format(text);
+  if (children.length === 0) {
+    element.appendChild(output);
+  } else {
+    replace(children.item(0), output);
+  }
 };

@@ -10,54 +10,54 @@
  */
 class Inventory {
 
-    static MAX_ROWS = 6;
+  static MAX_ROWS = 6;
 
-    /**
-     *
-     * @param {Row[]} rows
-     */
-    constructor(rows) {
-        this.title = "Hello World";
-        this._rows = rows;
-    }
+  /**
+   *
+   * @param {Row[]} rows
+   */
+  constructor(rows) {
+    this.title = 'Hello World';
+    this._rows = rows;
+  }
 
-    add(row) {
-        this._rows.push(row);
-    }
+  add(row) {
+    this._rows.push(row);
+  }
 
-    /**
-     *
-     * @param {number} index
-     * @returns {Row}
-     */
-    get(index) {
-        return this._rows[index];
-    }
+  /**
+   *
+   * @param {number} index
+   * @returns {Row}
+   */
+  get(index) {
+    return this._rows[index];
+  }
 
-    delete(index) {
-        this._rows.splice(index, 1);
-    }
+  delete(index) {
+    this._rows.splice(index, 1);
+  }
 
-    /**
-     *
-     * @param {number} rowIndex
-     * @param {number} slotIndex
-     * @returns {Slot | undefined}
-     */
-    item(rowIndex, slotIndex) {
-        const row = this._rows[rowIndex];
-        return row === undefined
-            ? undefined
-            : row.get(slotIndex);
-    }
+  /**
+   *
+   * @param {number} rowIndex
+   * @param {number} slotIndex
+   * @returns {Slot | undefined}
+   */
+  item(rowIndex, slotIndex) {
+    const row = this._rows[rowIndex];
+    return row === undefined
+      ? undefined
+      : row.get(slotIndex);
+  }
 
-    get length() {
-        return this._rows.length;
-    }
+  get length() {
+    return this._rows.length;
+  }
 
-    static get current() {
-        // shortcut
-        return Project.current.inventory;
-    }
+  static get current() {
+    // shortcut
+    return Project.current.inventory;
+  }
 
 }

@@ -13,16 +13,16 @@
  */
 class Codec {
 
-    /**
-     * Creates a new codec implementation
-     * @param {object} data
-     * @param {function(Project): string} [data.encode]
-     * @param {function(string): Project} [data.decode]
-     */
-    constructor(data) {
-        this.encode = data.encode;
-        this.decode = data.decode;
-    }
+  /**
+   * Creates a new codec implementation
+   * @param {object} data
+   * @param {function(Project): string} [data.encode]
+   * @param {function(string): Project} [data.decode]
+   */
+  constructor(data) {
+    this.encode = data.encode;
+    this.decode = data.decode;
+  }
 
 }
 
@@ -32,6 +32,6 @@ class Codec {
  * @type {Codec}
  */
 Codec.current = new Codec({
-    encode: project => JSON.stringify(project),
-    decode: string => JSON.parse(string)
+  encode: project => JSON.stringify(project),
+  decode: string => JSON.parse(string)
 });

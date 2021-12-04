@@ -22,7 +22,18 @@
  * Scroll
  * ===========================================================
  */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #00000011; }
-::-webkit-scrollbar-thumb { background: var(--color); }
-::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #00000011;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
